@@ -16,7 +16,7 @@ const Day = ({ defautlTitle }: DayProps) => {
 
     const [expanded, setExpanded] = useState<boolean>(false);
     const [day, setDay] = useState<string>(defautlTitle)
-    
+
     const handleChange = (_event: React.SyntheticEvent, newExpanded: boolean) => {
         setExpanded(newExpanded);
     };
@@ -24,18 +24,21 @@ const Day = ({ defautlTitle }: DayProps) => {
     let handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
         setDay(e.target.value)
     }
+    let stopPropagation = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+        e.stopPropagation()
+    }
 
     return (
         <Grid item xs={12} md={6} lg={4}>
             <Accordion expanded={expanded} onChange={handleChange}>
                 <AccordionSummary expandIcon={<img src={arrow} alt='arrow' />}>
-                    <input className={styles.day} value={day} onChange={handleChangeTitle} />
+                    <input className={styles.day} value={day} onChange={handleChangeTitle} onClick={stopPropagation} />
                 </AccordionSummary>
                 <AccordionDetails>
                     <Tasks />
                 </AccordionDetails>
             </Accordion>
-            </Grid>
+        </Grid>
     );
 };
 

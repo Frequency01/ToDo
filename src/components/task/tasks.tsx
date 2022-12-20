@@ -75,7 +75,7 @@ const Tasks = () => {
                         <input type='text' value={task.desc} disabled={task.swither} onChange={(event) => handleChangeTask(event.target.value, task, 'desc')} className={styles.inputDesc} />
                     </div>
                     <FormControlLabel
-                        control={<IOSSwitch sx={{ m: 1 }} checked={task.swither} onChange={(_event, checked) => handleChangeTask(checked, task, 'swither')}
+                        control={<IOSSwitch sx={{ m: 1 }} checked={task.swither} onChange={(event, checked) => handleChangeTask(checked, task, 'swither')}
                         />}
                         label=""
                     />
