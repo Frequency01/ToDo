@@ -1,8 +1,7 @@
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Typography from '@mui/material/Typography';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Grid from '@mui/material/Grid';
 import { IOSSwitch } from '../ui-custom/customSwitch'
 
 import styles from './styles.module.scss';
@@ -51,7 +50,7 @@ const Tasks = () => {
         setTasks((_) => [...tasks, addedTask])
     }
 
-    let handleChangeTask = (newValue: string | boolean, ex: any, key: string) => {
+    let handleChangeTask = (newValue: string | boolean, ex: defaultTask, key: string) => {
         let newTasks = tasks.map((item) => {
             if (item.id === ex.id) {
                 return { ...item, [key]: newValue }
@@ -61,7 +60,7 @@ const Tasks = () => {
         setTasks(newTasks);
     }
 
-    let handleDelete = (task: any) => {
+    let handleDelete = (task: defaultTask) => {
         const newItems = tasks.filter((item) => item.id !== task.id);
         setTasks(newItems);
     }
@@ -69,21 +68,19 @@ const Tasks = () => {
     return (
         <Typography component={'div'}>
             {tasks.map((task) => {
-                return <>
-                    <div className={styles.task} key={task.id}>
-                        <div className={styles.line} style={{ background: `#${task.color}` }} ></div>
-                        <div className={styles.inputs_contaier}>
-                            <input type='text' value={task.header} disabled={task.swither} onChange={(event) => handleChangeTask(event.target.value, task, 'header')} className={styles.inputHeader} style={{ textDecoration: task.swither ? `line-through` : 'none' }} />
-                            <input type='text' value={task.desc} disabled={task.swither} onChange={(event) => handleChangeTask(event.target.value, task, 'desc')} className={styles.inputDesc} />
-                        </div>
-                        <FormControlLabel
-                            control={<IOSSwitch sx={{ m: 1 }} checked={task.swither} onChange={(_event, checked) => handleChangeTask(checked, task, 'swither')}
-                            />}
-                            label=""
-                        />
-                        <button className={styles.delete} onClick={() => handleDelete(task)}>×</button>
+                return <div className={styles.task} key={task.id}>
+                    <div className={styles.line} style={{ background: `#${task.color}` }} ></div>
+                    <div className={styles.inputsContaier}>
+                        <input type='text' value={task.header} disabled={task.swither} onChange={(event) => handleChangeTask(event.target.value, task, 'header')} className={styles.inputHeader} style={{ textDecoration: task.swither ? `line-through` : 'none' }} />
+                        <input type='text' value={task.desc} disabled={task.swither} onChange={(event) => handleChangeTask(event.target.value, task, 'desc')} className={styles.inputDesc} />
                     </div>
-                </>
+                    <FormControlLabel
+                        control={<IOSSwitch sx={{ m: 1 }} checked={task.swither} onChange={(_event, checked) => handleChangeTask(checked, task, 'swither')}
+                        />}
+                        label=""
+                    />
+                    <button className={styles.delete} onClick={() => handleDelete(task)}>×</button>
+                </div>
             })}
             <div onClick={handleAddTask} className={styles.plus}>+</div>
         </Typography>

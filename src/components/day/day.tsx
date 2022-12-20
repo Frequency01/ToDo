@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Accordion, AccordionSummary, AccordionDetails } from '../ui-custom/customAccordion'
-import arrow from '../../images/vector.svg'
+import arrow from '../../images/arrow.svg'
 import Grid from '@mui/material/Grid';
 import Tasks from '../task/tasks'
 
@@ -16,6 +16,7 @@ const Day = ({ defautlTitle }: DayProps) => {
 
     const [expanded, setExpanded] = useState<boolean>(false);
     const [day, setDay] = useState<string>(defautlTitle)
+    
     const handleChange = (_event: React.SyntheticEvent, newExpanded: boolean) => {
         setExpanded(newExpanded);
     };
@@ -25,7 +26,7 @@ const Day = ({ defautlTitle }: DayProps) => {
     }
 
     return (
-        <Grid item xs={6} md={8}>
+        <Grid item xs={12} md={6} lg={4}>
             <Accordion expanded={expanded} onChange={handleChange}>
                 <AccordionSummary expandIcon={<img src={arrow} alt='arrow' />}>
                     <input className={styles.day} value={day} onChange={handleChangeTitle} />

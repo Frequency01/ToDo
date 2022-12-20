@@ -1,9 +1,10 @@
-import { styled } from '@mui/material/styles';
 import MuiAccordion, { AccordionProps } from '@mui/material/Accordion';
 import MuiAccordionSummary, {
     AccordionSummaryProps,
 } from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
+
+import { styled } from '@mui/material/styles';
 
 
 
@@ -19,9 +20,6 @@ export const Accordion = styled((props: AccordionProps) => (
     borderRadius: '25px',
     width: '350px',
     marginLeft: '20px',
-    // '&:not(:first-of-type)': {
-    //     marginTop: '10px',
-    // },
     border: `1px solid ${theme.palette.divider}`,
     '&:not(:last-child)': {
         borderBottom: 0,
