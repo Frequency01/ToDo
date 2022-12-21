@@ -22,7 +22,7 @@ let WithReactQuery = (isTickerActive: boolean) => {
     if (isLoading) {
       return <>Loading...</>
     } else if (data?.error) {
-      return <>News fetching Error: {data.error.message}</>
+      return <>News fetching Error (localhost only): {data.error.message}</>
     } else {
       return <> {data?.news.articles && data.news.articles.map((news: News) => news.title)}</>
     }
