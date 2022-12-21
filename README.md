@@ -7,7 +7,7 @@
 - React-Query (https://react-query-v3.tanstack.com/)
 
 
-Доступно по ссылке:
+Доступно по ссылке: https://frequency01.github.io/ToDo/
 
 Запуск проекта:
 ```
